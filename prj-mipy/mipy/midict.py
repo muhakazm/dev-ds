@@ -1,9 +1,11 @@
+#[BEGIN][textdicts]
+
 class InsensitiveKeysDict(dict):
     """
     A dictionary that allows case-insensitive key lookups while preserving the original casing.
 
     Example:
-        >>> d = CaseInsensitiveDict({"Hello": "World", "TEST": 123})
+        >>> d = InsensitiveKeysDict({"Hello": "World", "TEST": 123})
         >>> print(d["hello"])  # Output: World
         >>> print(d["test"])  # Output: 123
         >>> d["hElLo"] = "New Value"
@@ -64,3 +66,18 @@ class InsensitiveKeysDict(dict):
     def to_dict(self):
         """Convert to a standard dictionary (useful for JSON serialization)."""
         return dict(self)
+
+class DeepInsensitiveKeysDict(InsensitiveKeysDict):
+    """
+    A case-insensitive dictionary that also applies to nested dictionaries.
+    
+    Example:
+        >>> d = DeepInsensitiveKeysDict({"Outer": {"Inner": "Value"}})
+        >>> print(d["outer"]["inner"])  # Output: Value
+    """
+    def __setitem__(self, key, value):
+        if isinstance(value, dict):  # Convert nested dicts
+            value = DeepInsensitiveKeysDict(value)
+        super().__setitem__(key, value)
+
+#[END][textdicts]
