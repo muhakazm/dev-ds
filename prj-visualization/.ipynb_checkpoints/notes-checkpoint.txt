@@ -1,0 +1,2 @@
+1. Register / install the environment to be used as a kernel in notebooks
+(ds-gen) C:\Users\muhak\prj\dev-ds\prj-visualization>python -m ipykernel install --user --name=ds-gen --display-name "python:ds-gen"
