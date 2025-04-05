@@ -1,4 +1,20 @@
+# Virtual environments
 shared-envs/
-**/.ipynb_checkpoints/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# Python cache files
 **/__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
 **/.ipynb_checkpoints/
+
+# Others
+*.log
+*.tmp
+*.swp
+*.bak
